@@ -6,6 +6,7 @@ let enData = JSON.parse(fs.readFileSync('lang/en.json', 'utf8'));
 let zhData = JSON.parse(fs.readFileSync('lang/zh.json', 'utf8'));
 let thData = JSON.parse(fs.readFileSync('lang/th.json', 'utf8'));
 let ptData = JSON.parse(fs.readFileSync('lang/pt.json', 'utf8'));
+let viData = JSON.parse(fs.readFileSync('lang/vi.json', 'utf8'));
 
 // 遞迴函數來展開巢狀結構
 function expandNestedObjects(obj, prefix = '') {
@@ -25,6 +26,7 @@ const expandedEnData = expandNestedObjects(enData);
 const expandedZhData = expandNestedObjects(zhData);
 const expandedThData = expandNestedObjects(thData);
 const expandedPtData = expandNestedObjects(ptData);
+const expandedViData = expandNestedObjects(viData);
 
 const mergedData = [];
 for (const key in expandedEnData) {
@@ -35,6 +37,7 @@ for (const key in expandedEnData) {
             zh: expandedZhData[key],
             th: expandedThData[key],
             pt: expandedPtData[key],
+            vi: expandedViData[key],
         });
     }
 }
@@ -48,6 +51,7 @@ worksheet.columns = [
     { header: 'zh', key: 'zh', width: 30 },
     { header: 'th', key: 'th', width: 30 },
     { header: 'pt', key: 'pt', width: 30 },
+    { header: 'vi', key: 'vi', width: 30 },
 ];
 
 // Add merged data to the worksheet
