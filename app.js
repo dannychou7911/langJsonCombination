@@ -7,6 +7,9 @@ let zhData = JSON.parse(fs.readFileSync('lang/zh.json', 'utf8'));
 let thData = JSON.parse(fs.readFileSync('lang/th.json', 'utf8'));
 let ptData = JSON.parse(fs.readFileSync('lang/pt.json', 'utf8'));
 let viData = JSON.parse(fs.readFileSync('lang/vi.json', 'utf8'));
+let zhTWData = JSON.parse(fs.readFileSync('lang/zh-tw.json', 'utf8'));
+let esData = JSON.parse(fs.readFileSync('lang/es.json', 'utf8'));
+let koData = JSON.parse(fs.readFileSync('lang/ko.json', 'utf8'));
 
 // 遞迴函數來展開巢狀結構
 function expandNestedObjects(obj, prefix = '') {
@@ -27,6 +30,9 @@ const expandedZhData = expandNestedObjects(zhData);
 const expandedThData = expandNestedObjects(thData);
 const expandedPtData = expandNestedObjects(ptData);
 const expandedViData = expandNestedObjects(viData);
+const expandedZhTWData = expandNestedObjects(zhTWData);
+const expandedEsData = expandNestedObjects(esData);
+const expandedKoData = expandNestedObjects(koData);
 
 const mergedData = [];
 for (const key in expandedEnData) {
@@ -38,6 +44,9 @@ for (const key in expandedEnData) {
             th: expandedThData[key],
             pt: expandedPtData[key],
             vi: expandedViData[key],
+            zhTW: expandedZhTWData[key],
+            es: expandedEsData[key],
+            ko: expandedKoData[key],
         });
     }
 }
@@ -52,6 +61,9 @@ worksheet.columns = [
     { header: 'th', key: 'th', width: 30 },
     { header: 'pt', key: 'pt', width: 30 },
     { header: 'vi', key: 'vi', width: 30 },
+    { header: 'zhTW', key: 'zhTW', width: 30 },
+    { header: 'es', key: 'es', width: 30 },
+    { header: 'ko', key: 'ko', width: 30 },
 ];
 
 // Add merged data to the worksheet
